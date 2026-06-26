@@ -1,6 +1,7 @@
 import image4 from '../assets/images/image4.jpeg';
 import image5 from '../assets/images/image5.jpeg';
 import AnimatedCardGrid from './AnimatedCardGrid';
+import AnimatedHeading from './AnimatedHeading';
 
 const plotTypes = [
   {
@@ -46,8 +47,8 @@ export default function Plots() {
     <section id="plots" className="plots section">
       <div className="container">
         <div className="section-header">
-          <span className="section-tag">Plots &amp; Projects</span>
-          <h2>Explore Our Offerings</h2>
+          <AnimatedHeading as="span" className="section-tag">Plots &amp; Projects</AnimatedHeading>
+          <AnimatedHeading as="h2">Explore Our Offerings</AnimatedHeading>
           <p>
             From luxurious villas to thoughtfully designed apartments and gated communities,
             we offer a diverse range of residential options tailored to your lifestyle.
@@ -57,7 +58,7 @@ export default function Plots() {
         <div className="plots-showcase">
           <img src={image4} alt="Prajwalaa open plots" className="plots-img" />
           <div className="plots-types">
-            <AnimatedCardGrid className="plots-types-grid" columns={1} variant="plots">
+            <AnimatedCardGrid className="plots-types-grid" columns={1}>
               {plotTypes.map((plot) => (
                 <div key={plot.title} className="plot-type-card">
                   <h3>{plot.title}</h3>
@@ -74,7 +75,7 @@ export default function Plots() {
         </div>
 
         <h3 className="subsection-title">Our Recent Projects</h3>
-        <AnimatedCardGrid className="projects-grid" columns={3} variant="projects">
+        <AnimatedCardGrid className="projects-grid" columns={3}>
           {projects.map((project) => (
             <div key={project.name} className="project-card">
               <img src={image5} alt={project.name} />

@@ -1,3 +1,4 @@
+import AnimatedHeading from './AnimatedHeading';
 import AnimatedCardGrid from './AnimatedCardGrid';
 
 const highlights = [
@@ -11,8 +12,8 @@ export default function Highlights() {
   return (
     <section className="highlights">
       <div className="container">
-        <h2 className="section-label">Project Highlights</h2>
-        <AnimatedCardGrid className="highlights-grid" columns={4} variant="highlights">
+        <AnimatedHeading as="h2" className="section-label">Project Highlights</AnimatedHeading>
+        <AnimatedCardGrid className="highlights-grid" columns={4}>
           {highlights.map((item) => (
             <div key={item.label} className="highlight-card">
               <span className="highlight-value">{item.value}</span>

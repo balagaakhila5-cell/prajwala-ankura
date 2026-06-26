@@ -1,4 +1,5 @@
 import AnimatedCardGrid from './AnimatedCardGrid';
+import AnimatedHeading from './AnimatedHeading';
 
 const testimonials = [
   {
@@ -23,10 +24,10 @@ export default function Testimonials() {
     <section className="testimonials section">
       <div className="container">
         <div className="section-header">
-          <span className="section-tag">Testimonials</span>
-          <h2>What Our Clients Say</h2>
+          <AnimatedHeading as="span" className="section-tag">Testimonials</AnimatedHeading>
+          <AnimatedHeading as="h2">What Our Clients Say</AnimatedHeading>
         </div>
-        <AnimatedCardGrid className="testimonials-grid" columns={3} variant="testimonials">
+        <AnimatedCardGrid className="testimonials-grid" columns={3}>
           {testimonials.map((t) => (
             <blockquote key={t.author} className="testimonial-card">
               <p className="quote">&ldquo;{t.quote}&rdquo;</p>

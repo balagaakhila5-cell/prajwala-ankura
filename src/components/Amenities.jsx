@@ -1,4 +1,5 @@
 import AnimatedCardGrid from './AnimatedCardGrid';
+import AnimatedHeading from './AnimatedHeading';
 
 const amenities = [
   { icon: '💪', title: 'Gymnasium', desc: 'Modern fitness facilities for an active and healthy lifestyle' },
@@ -20,14 +21,14 @@ export default function Amenities() {
     <section id="amenities" className="amenities section section-dark">
       <div className="container">
         <div className="section-header">
-          <span className="section-tag">Amenities</span>
-          <h2>360° Entertainment &amp; Convenience</h2>
+          <AnimatedHeading as="span" className="section-tag">Amenities</AnimatedHeading>
+          <AnimatedHeading as="h2">360° Entertainment &amp; Convenience</AnimatedHeading>
           <p>
             Prajwalaa Ankura offers world-class amenities designed for community living,
             with facilities for recreation, fitness, and relaxation for all age groups.
           </p>
         </div>
-        <AnimatedCardGrid className="amenities-grid" columns={3} variant="amenities">
+        <AnimatedCardGrid className="amenities-grid" columns={3}>
           {amenities.map((item) => (
             <div key={item.title} className="amenity-card">
               <span className="amenity-icon">{item.icon}</span>

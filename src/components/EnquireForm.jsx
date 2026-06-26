@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import AnimatedHeading from './AnimatedHeading';
 
 export default function EnquireForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -13,8 +14,8 @@ export default function EnquireForm() {
     <section id="enquire" className="enquire section">
       <div className="container enquire-grid">
         <div className="enquire-text">
-          <span className="section-tag">Get in Touch</span>
-          <h2>Enquire Now</h2>
+          <AnimatedHeading as="span" className="section-tag">Get in Touch</AnimatedHeading>
+          <AnimatedHeading as="h2">Enquire Now</AnimatedHeading>
           <p>
             Ready to embark on your journey towards your dream property? Contact us today
             to learn more about our projects, schedule a site visit, or discuss your

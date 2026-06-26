@@ -1,3 +1,5 @@
+import AnimatedHeading from './AnimatedHeading';
+import AnimatedFadeGroup from './AnimatedFadeGroup';
 import image1 from '../assets/images/image1.jpeg';
 import image3 from '../assets/images/image3.jpeg';
 
@@ -5,13 +7,13 @@ export default function About() {
   return (
     <section id="about" className="about section">
       <div className="container about-grid">
-        <div className="about-images">
+        <AnimatedFadeGroup className="about-images">
           <img src={image1} alt="Prajwalaa Ankura exterior view" className="about-img-main" />
           <img src={image3} alt="Prajwalaa Ankura architecture" className="about-img-secondary" />
-        </div>
+        </AnimatedFadeGroup>
         <div className="about-text">
-          <span className="section-tag">About</span>
-          <h2>Luxury 2 BHK Living in Ameenpur</h2>
+          <AnimatedHeading as="span" className="section-tag">About</AnimatedHeading>
+          <AnimatedHeading as="h2">Luxury 2 BHK Living in Ameenpur</AnimatedHeading>
           <p>
             Prajwalaa Ankura, developed by Prajwalaa Properties, is located at Ameenpur,
             Hyderabad and offers a vibrant residential experience with 2 BHK flats ranging
@@ -23,7 +25,7 @@ export default function About() {
             offers better privacy and space. Well-connected via Old Mumbai Highway and NH 65,
             with peaceful surroundings away from city noise.
           </p>
-          <ul className="about-features">
+          <AnimatedFadeGroup as="ul" className="about-features">
             <li>
               <strong>Strong Connectivity</strong>
               <span>Easy access to IT hubs, schools, and healthcare via major highways</span>
@@ -40,7 +42,7 @@ export default function About() {
               <strong>Trusted Developer</strong>
               <span>20+ years of excellence with 2000+ happy families</span>
             </li>
-          </ul>
+          </AnimatedFadeGroup>
         </div>
       </div>
     </section>

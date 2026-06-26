@@ -93,6 +93,25 @@ export const locationCategories = [
   },
 ];
 
+export const recommendedSites = [
+  {
+    title: 'Prajwalaa Ankura',
+    subtitle: 'Ameenpur',
+    meta: 'Hyderabad · Residential',
+    categoryId: null,
+    place: null,
+  },
+  ...locationCategories.flatMap((category) =>
+    category.places.slice(0, 2).map((place) => ({
+      title: place.name,
+      subtitle: place.distance,
+      meta: `Hyderabad · ${category.label}`,
+      categoryId: category.id,
+      place,
+    })),
+  ),
+];
+
 export function getMapEmbedUrl(destination = null) {
   const origin = `${PROJECT_LAT},${PROJECT_LNG}`;
   if (!destination) {

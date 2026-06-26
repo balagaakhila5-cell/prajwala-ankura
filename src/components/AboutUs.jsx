@@ -1,5 +1,6 @@
 import image6 from '../assets/images/image6.jpeg';
 import AnimatedCardGrid from './AnimatedCardGrid';
+import AnimatedHeading from './AnimatedHeading';
 
 const values = [
   'Integrity', 'Transparency', 'Honesty', 'Professionalism', 'Simplicity', 'Future-Readiness',
@@ -16,8 +17,8 @@ export default function AboutUs() {
       <div className="container">
         <div className="about-us-grid">
           <div className="about-us-text">
-            <span className="section-tag">About Us</span>
-            <h2>Prajwalaa Properties — 20+ Years of Excellence</h2>
+            <AnimatedHeading as="span" className="section-tag">About Us</AnimatedHeading>
+            <AnimatedHeading as="h2">Prajwalaa Properties — 20+ Years of Excellence</AnimatedHeading>
             <p>
               Prajwalaa Properties is a renowned real estate company based in Hyderabad,
               committed to delivering excellence in every project. Prajwalaa Ankura in
@@ -30,7 +31,7 @@ export default function AboutUs() {
               Tree, Prajwalaa Pearl, and Prajwalaa Antilia.
             </p>
 
-            <AnimatedCardGrid className="vision-mission" columns={2} variant="compact">
+            <AnimatedCardGrid className="vision-mission" columns={2}>
               <div className="vm-card">
                 <h3>Our Vision</h3>
                 <p>
@@ -60,7 +61,7 @@ export default function AboutUs() {
 
           <div className="about-us-side">
             <img src={image6} alt="Prajwalaa Ankura apartments" className="about-us-img" />
-            <AnimatedCardGrid className="stats-grid" columns={2} variant="stats">
+            <AnimatedCardGrid className="stats-grid" columns={2}>
               <div className="stat-card">
                 <span className="stat-value">20+</span>
                 <span className="stat-label">Years of Experience</span>
@@ -83,7 +84,7 @@ export default function AboutUs() {
 
         <div className="services-section">
           <h3>Quality Services</h3>
-          <AnimatedCardGrid className="services-grid" columns={3} variant="services">
+          <AnimatedCardGrid className="services-grid" columns={3}>
             {services.map((s) => (
               <div key={s} className="service-item">
                 <span className="service-dot" />

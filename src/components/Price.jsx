@@ -1,4 +1,5 @@
 import AnimatedCardGrid from './AnimatedCardGrid';
+import AnimatedHeading from './AnimatedHeading';
 
 const offerings = [
   {
@@ -20,8 +21,8 @@ export default function Price() {
     <section id="price" className="price section">
       <div className="container">
         <div className="section-header">
-          <span className="section-tag">Price</span>
-          <h2>Prajwalaa Ankura Price List</h2>
+          <AnimatedHeading as="span" className="section-tag">Price</AnimatedHeading>
+          <AnimatedHeading as="h2">Prajwalaa Ankura Price List</AnimatedHeading>
           <p>
             2 BHK luxury apartments in Ameenpur, Hyderabad. RERA registered under
             P01100010592 &amp; P01100010719. Starting from ₹ 5,500 per Sq. Ft.
@@ -58,7 +59,7 @@ export default function Price() {
           </table>
         </div>
 
-        <AnimatedCardGrid className="price-cards" columns={2} variant="price">
+        <AnimatedCardGrid className="price-cards" columns={2}>
           {offerings.map((item) => (
             <div key={item.area} className="price-card">
               <h3>{item.type}</h3>

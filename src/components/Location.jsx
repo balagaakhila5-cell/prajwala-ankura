@@ -1,4 +1,5 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import AnimatedHeading from './AnimatedHeading';
 import {
   locationCategories,
   getMapEmbedUrl,
@@ -34,12 +35,26 @@ export default function Location() {
     setSelectedPlace(place);
   };
 
+  useEffect(() => {
+    const onSelectLocation = (event) => {
+      const { place, categoryId } = event.detail ?? {};
+      if (!place || !categoryId) return;
+      selectPlace(place, categoryId);
+      requestAnimationFrame(() => {
+        scrollToCategory(categoryId);
+      });
+    };
+
+    window.addEventListener('select-location', onSelectLocation);
+    return () => window.removeEventListener('select-location', onSelectLocation);
+  }, []);
+
   return (
     <section id="location" className="location section section-dark">
       <div className="container">
         <div className="section-header">
-          <span className="section-tag">Location</span>
-          <h2>Around Prajwalaa Ankura</h2>
+          <AnimatedHeading as="span" className="section-tag">Location</AnimatedHeading>
+          <AnimatedHeading as="h2">Around Prajwalaa Ankura</AnimatedHeading>
           <p>
             Located in Ameenpur, Hyderabad (502032) — well-connected via Old Mumbai Highway
             and NH 65. Explore schools, hospitals, temples, mosques, and more nearby.

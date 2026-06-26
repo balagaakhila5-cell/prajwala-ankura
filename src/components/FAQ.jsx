@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import AnimatedHeading from './AnimatedHeading';
 
 const faqs = [
   {
@@ -34,8 +35,8 @@ export default function FAQ() {
     <section className="faq section section-alt">
       <div className="container">
         <div className="section-header">
-          <span className="section-tag">FAQ</span>
-          <h2>Your Questions, Answered</h2>
+          <AnimatedHeading as="span" className="section-tag">FAQ</AnimatedHeading>
+          <AnimatedHeading as="h2">Your Questions, Answered</AnimatedHeading>
         </div>
         <div className="faq-list">
           {faqs.map((item, i) => (

@@ -17,7 +17,6 @@ export default function AnimatedCardGrid({
   children,
   className = '',
   columns = 3,
-  variant = 'default',
 }) {
   const { ref, phase } = useCardJoinAnimation();
   const items = Array.isArray(children) ? children : [children];
@@ -25,7 +24,7 @@ export default function AnimatedCardGrid({
   return (
     <div
       ref={ref}
-      className={`animated-card-grid ${className} animated-card-grid--${variant} animated-card-grid--${phase}`}
+      className={`animated-card-grid ${className} animated-card-grid--${phase}`}
       style={{ '--grid-cols': columns }}
       data-phase={phase}
     >
@@ -37,7 +36,6 @@ export default function AnimatedCardGrid({
             className="animated-card-cell"
             style={{
               '--i': index,
-              '--total': items.length,
               '--join-x': `${x}px`,
               '--join-y': `${y}px`,
             }}
