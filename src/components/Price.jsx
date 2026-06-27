@@ -1,5 +1,11 @@
+import { Link } from 'react-router-dom';
 import AnimatedCardGrid from './AnimatedCardGrid';
 import AnimatedHeading from './AnimatedHeading';
+import AnimatedReveal from './AnimatedReveal';
+import SectionMotionBackground from './SectionMotionBackground';
+import { sectionBackgrounds } from '../data/sectionBackgrounds';
+
+const motionBg = sectionBackgrounds.price;
 
 const offerings = [
   {
@@ -16,20 +22,28 @@ const offerings = [
   },
 ];
 
-export default function Price() {
+export default function Price({ hideHeader = false }) {
   return (
-    <section id="price" className="price section">
-      <div className="container">
-        <div className="section-header">
-          <AnimatedHeading as="span" className="section-tag">Price</AnimatedHeading>
-          <AnimatedHeading as="h2">Prajwalaa Ankura Price List</AnimatedHeading>
-          <p>
-            2 BHK luxury apartments in Ameenpur, Hyderabad. RERA registered under
-            P01100010592 &amp; P01100010719. Starting from ₹ 5,500 per Sq. Ft.
-          </p>
-        </div>
+    <section
+      id="price"
+      className={`price section section--motion section-motion-tone-${motionBg.tone}`}
+    >
+      <SectionMotionBackground {...motionBg} />
+      <div className="section-motion-content container">
+        {!hideHeader && (
+          <div className="section-header">
+            <AnimatedHeading as="span" className="section-tag">Price</AnimatedHeading>
+            <AnimatedHeading as="h2">Prajwalaa Ankura Price List</AnimatedHeading>
+            <AnimatedReveal delay={1}>
+              <p>
+                2 BHK luxury apartments in Ameenpur, Hyderabad. RERA registered under
+                P01100010592 &amp; P01100010719. Starting from ₹ 5,500 per Sq. Ft.
+              </p>
+            </AnimatedReveal>
+          </div>
+        )}
 
-        <div className="price-table-wrap">
+        <AnimatedReveal className="price-table-wrap" delay={2}>
           <table className="price-table">
             <thead>
               <tr>
@@ -51,13 +65,13 @@ export default function Price() {
                     <span className="price-lock">{item.price}</span>
                   </td>
                   <td>
-                    <a href="#enquire" className="btn btn-sm">Enquire Now</a>
+                    <Link to="/enquire" className="btn btn-sm">Enquire Now</Link>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </div>
+        </AnimatedReveal>
 
         <AnimatedCardGrid className="price-cards" columns={2}>
           {offerings.map((item) => (
@@ -66,14 +80,16 @@ export default function Price() {
               <p>{item.desc}</p>
               <span className="price-area">{item.area}</span>
               <span className="price-amount">{item.price}</span>
-              <a href="#enquire" className="btn btn-primary btn-sm">Enquire Now</a>
+              <Link to="/enquire" className="btn btn-primary btn-sm">Enquire Now</Link>
             </div>
           ))}
         </AnimatedCardGrid>
 
-        <p className="price-note">
-          Possession starting from December 2028 · New Launch · 0.82 Acres · 145 Units
-        </p>
+        <AnimatedReveal delay={3}>
+          <p className="price-note">
+            Possession starting from December 2028 · New Launch · 0.82 Acres · 145 Units
+          </p>
+        </AnimatedReveal>
       </div>
     </section>
   );

@@ -1,5 +1,7 @@
 import AnimatedCardGrid from './AnimatedCardGrid';
 import AnimatedHeading from './AnimatedHeading';
+import SectionMotionBackground from './SectionMotionBackground';
+import { sectionBackgrounds } from '../data/sectionBackgrounds';
 
 const testimonials = [
   {
@@ -19,10 +21,13 @@ const testimonials = [
   },
 ];
 
+const motionBg = sectionBackgrounds.testimonials;
+
 export default function Testimonials() {
   return (
-    <section className="testimonials section">
-      <div className="container">
+    <section className={`testimonials section section--motion section-motion-tone-${motionBg.tone}`}>
+      <SectionMotionBackground {...motionBg} />
+      <div className="section-motion-content container">
         <div className="section-header">
           <AnimatedHeading as="span" className="section-tag">Testimonials</AnimatedHeading>
           <AnimatedHeading as="h2">What Our Clients Say</AnimatedHeading>

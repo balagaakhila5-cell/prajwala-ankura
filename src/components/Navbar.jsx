@@ -1,16 +1,17 @@
 import { useEffect, useMemo, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { recommendedSites } from '../data/locationPlaces';
-import prajwalaIcon from '../assets/images/prajwala-icon-1.jpeg';
+import prajwalaIcon from '../assets/images/prajwala-icon1.png';
 
 const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Amenities', href: '#amenities' },
-  { label: 'Plots', href: '#plots' },
-  { label: 'About Us', href: '#about-us' },
-  { label: 'Price', href: '#price' },
-  { label: 'Location', href: '#location' },
-  { label: 'Enquire Now', href: '#enquire', cta: true },
+  { label: 'Home', to: '/' },
+  { label: 'About', to: '/about' },
+  { label: 'Amenities', to: '/amenities' },
+  { label: 'Projects', to: '/projects' },
+  { label: 'Plots', to: '/plots' },
+  { label: 'Price', to: '/price' },
+  { label: 'Location', to: '/location' },
+  { label: 'Enquire Now', to: '/enquire', cta: true },
 ];
 
 function SearchIcon() {
@@ -41,6 +42,7 @@ function CloseIcon() {
 }
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const [searchOpen, setSearchOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [query, setQuery] = useState('');
@@ -48,11 +50,6 @@ export default function Navbar() {
   const closeAll = () => {
     setSearchOpen(false);
     setDrawerOpen(false);
-  };
-
-  const handleNav = (href) => {
-    closeAll();
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleSiteSelect = (site) => {
@@ -63,7 +60,7 @@ export default function Navbar() {
         detail: { place: site.place, categoryId: site.categoryId },
       }));
     }
-    document.getElementById('location')?.scrollIntoView({ behavior: 'smooth' });
+    navigate('/location');
   };
 
   const filteredSites = useMemo(() => {
@@ -91,12 +88,7 @@ export default function Navbar() {
   return (
     <header className="navbar">
       <div className="navbar-inner">
-        <a
-          href="#home"
-          className="navbar-logo"
-          aria-label="Prajwalaa Ankura — Home"
-          onClick={(e) => { e.preventDefault(); handleNav('#home'); }}
-        >
+        <Link to="/" className="navbar-logo" aria-label="Prajwalaa Ankura — Home" onClick={closeAll}>
           <img
             src={prajwalaIcon}
             alt=""
@@ -107,7 +99,7 @@ export default function Navbar() {
             <span className="logo-main">Prajwalaa</span>
             <span className="logo-sub">Ankura</span>
           </span>
-        </a>
+        </Link>
 
         <div className="nav-actions">
           <button
@@ -201,15 +193,15 @@ export default function Navbar() {
 
         <nav className="nav-drawer-links">
           {navLinks.map((link, index) => (
-            <a
-              key={link.href}
-              href={link.href}
+            <Link
+              key={link.to}
+              to={link.to}
               className={`nav-drawer-link ${link.cta ? 'nav-drawer-link--cta' : ''}`}
               style={{ '--i': index }}
-              onClick={(e) => { e.preventDefault(); handleNav(link.href); }}
+              onClick={closeAll}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
       </aside>

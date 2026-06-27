@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import AnimatedHeading from './AnimatedHeading';
+import AnimatedReveal from './AnimatedReveal';
+import SectionMotionBackground from './SectionMotionBackground';
+import { sectionBackgrounds } from '../data/sectionBackgrounds';
 import {
   locationCategories,
   getMapEmbedUrl,
   PROJECT_ORIGIN,
 } from '../data/locationPlaces';
 
-export default function Location() {
+export default function Location({ hideHeader = false }) {
   const sidebarRef = useRef(null);
   const [expandedCategory, setExpandedCategory] = useState('schools');
   const [selectedPlace, setSelectedPlace] = useState(locationCategories[0].places[0]);
@@ -49,19 +52,29 @@ export default function Location() {
     return () => window.removeEventListener('select-location', onSelectLocation);
   }, []);
 
-  return (
-    <section id="location" className="location section section-dark">
-      <div className="container">
-        <div className="section-header">
-          <AnimatedHeading as="span" className="section-tag">Location</AnimatedHeading>
-          <AnimatedHeading as="h2">Around Prajwalaa Ankura</AnimatedHeading>
-          <p>
-            Located in Ameenpur, Hyderabad (502032) — well-connected via Old Mumbai Highway
-            and NH 65. Explore schools, hospitals, temples, mosques, and more nearby.
-          </p>
-        </div>
+  const motionBg = sectionBackgrounds.location;
 
-        <div className="location-map-layout">
+  return (
+    <section
+      id="location"
+      className={`location section section-dark section--motion section-motion-tone-${motionBg.tone}`}
+    >
+      <SectionMotionBackground {...motionBg} />
+      <div className="section-motion-content container">
+        {!hideHeader && (
+          <div className="section-header">
+            <AnimatedHeading as="span" className="section-tag">Location</AnimatedHeading>
+            <AnimatedHeading as="h2">Around Prajwalaa Ankura</AnimatedHeading>
+            <AnimatedReveal delay={1}>
+              <p>
+                Located in Ameenpur, Hyderabad (502032) — well-connected via Old Mumbai Highway
+                and NH 65. Explore schools, hospitals, temples, mosques, and more nearby.
+              </p>
+            </AnimatedReveal>
+          </div>
+        )}
+
+        <AnimatedReveal className="location-map-layout" delay={2}>
           <aside className="location-sidebar" ref={sidebarRef}>
             <div className="location-sidebar-header">
               <h3>Around Prajwalaa Ankura</h3>
@@ -166,7 +179,7 @@ export default function Location() {
               </div>
             )}
           </div>
-        </div>
+        </AnimatedReveal>
       </div>
     </section>
   );

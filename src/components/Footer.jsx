@@ -1,12 +1,16 @@
+import { Link } from 'react-router-dom';
+import AnimatedFadeGroup from './AnimatedFadeGroup';
+import AnimatedReveal from './AnimatedReveal';
+
 export default function Footer() {
   return (
     <footer className="footer">
-      <div className="container footer-grid">
+      <AnimatedFadeGroup className="container footer-grid">
         <div className="footer-brand">
-          <div className="navbar-logo">
+          <Link to="/" className="navbar-logo footer-logo">
             <span className="logo-main">Prajwalaa</span>
             <span className="logo-sub">Ankura</span>
-          </div>
+          </Link>
           <p>
             Prajwalaa Properties — Hyderabad&apos;s trusted real estate partner with
             20+ years of excellence in delivering quality homes and communities.
@@ -15,13 +19,13 @@ export default function Footer() {
 
         <div className="footer-links">
           <h4>Quick Links</h4>
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#amenities">Amenities</a>
-          <a href="#plots">Plots</a>
-          <a href="#about-us">About Us</a>
-          <a href="#price">Price</a>
-          <a href="#location">Location</a>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/amenities">Amenities</Link>
+          <Link to="/projects">Projects</Link>
+          <Link to="/plots">Plots</Link>
+          <Link to="/price">Price</Link>
+          <Link to="/location">Location</Link>
         </div>
 
         <div className="footer-links">
@@ -37,14 +41,16 @@ export default function Footer() {
           <span>Hyderabad, Telangana</span>
           <span>Sales Enquiry</span>
           <span>Book Site Visit</span>
-          <a href="#enquire" className="footer-cta">Enquire Now</a>
+          <Link to="/enquire" className="footer-cta">Enquire Now</Link>
         </div>
-      </div>
-      <div className="footer-bottom">
-        <div className="container">
-          <p>&copy; {new Date().getFullYear()} Prajwalaa Properties. All rights reserved.</p>
+      </AnimatedFadeGroup>
+      <AnimatedReveal>
+        <div className="footer-bottom">
+          <div className="container">
+            <p>&copy; {new Date().getFullYear()} Prajwalaa Properties. All rights reserved.</p>
+          </div>
         </div>
-      </div>
+      </AnimatedReveal>
     </footer>
   );
 }

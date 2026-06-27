@@ -1,5 +1,9 @@
 import AnimatedHeading from './AnimatedHeading';
 import AnimatedCardGrid from './AnimatedCardGrid';
+import SectionMotionBackground from './SectionMotionBackground';
+import { sectionBackgrounds } from '../data/sectionBackgrounds';
+
+const motionBg = sectionBackgrounds.highlights;
 
 const highlights = [
   { value: '0.82', label: 'Acres Land Area' },
@@ -10,8 +14,11 @@ const highlights = [
 
 export default function Highlights() {
   return (
-    <section className="highlights">
-      <div className="container">
+    <section
+      className={`highlights section--motion section-motion-tone-${motionBg.tone}`}
+    >
+      <SectionMotionBackground {...motionBg} />
+      <div className="section-motion-content container">
         <AnimatedHeading as="h2" className="section-label">Project Highlights</AnimatedHeading>
         <AnimatedCardGrid className="highlights-grid" columns={4}>
           {highlights.map((item) => (

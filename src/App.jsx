@@ -1,37 +1,33 @@
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Highlights from './components/Highlights';
-import About from './components/About';
-import Amenities from './components/Amenities';
-import Plots from './components/Plots';
-import AboutUs from './components/AboutUs';
-import Price from './components/Price';
-import Location from './components/Location';
-import Testimonials from './components/Testimonials';
-import FAQ from './components/FAQ';
-import EnquireForm from './components/EnquireForm';
-import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import AmenitiesPage from './pages/AmenitiesPage';
+import ProjectsPage from './pages/ProjectsPage';
+import PlotsPage from './pages/PlotsPage';
+import PricePage from './pages/PricePage';
+import LocationPage from './pages/LocationPage';
+import EnquirePage from './pages/EnquirePage';
 import './App.css';
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
+      <ScrollToTop />
       <Navbar />
-      <main>
-        <Hero />
-        <Highlights />
-        <About />
-        <Amenities />
-        <Plots />
-        <AboutUs />
-        <Price />
-        <Location />
-        <Testimonials />
-        <FAQ />
-        <EnquireForm />
-      </main>
-      <Footer />
-    </>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/about-us" element={<Navigate to="/about#about-company" replace />} />
+        <Route path="/amenities" element={<AmenitiesPage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/plots" element={<PlotsPage />} />
+        <Route path="/price" element={<PricePage />} />
+        <Route path="/location" element={<LocationPage />} />
+        <Route path="/enquire" element={<EnquirePage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

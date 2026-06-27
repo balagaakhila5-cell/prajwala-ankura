@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     watch: {
-      ignored: ['**/*.pdf'],
+      ignored: ['**/*.pdf', '**/image23.jpg'],
     },
   },
 })

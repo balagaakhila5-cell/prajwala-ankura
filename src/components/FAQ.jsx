@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import AnimatedFadeGroup from './AnimatedFadeGroup';
 import AnimatedHeading from './AnimatedHeading';
 
 const faqs = [
@@ -38,7 +39,7 @@ export default function FAQ() {
           <AnimatedHeading as="span" className="section-tag">FAQ</AnimatedHeading>
           <AnimatedHeading as="h2">Your Questions, Answered</AnimatedHeading>
         </div>
-        <div className="faq-list">
+        <AnimatedFadeGroup className="faq-list">
           {faqs.map((item, i) => (
             <div key={item.q} className={`faq-item ${openIndex === i ? 'open' : ''}`}>
               <button
@@ -51,7 +52,7 @@ export default function FAQ() {
               {openIndex === i && <div className="faq-answer">{item.a}</div>}
             </div>
           ))}
-        </div>
+        </AnimatedFadeGroup>
       </div>
     </section>
   );

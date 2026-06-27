@@ -6,7 +6,7 @@ function getCellOffset(index, columns, total) {
   const row = Math.floor(index / columns);
   const centerCol = (columns - 1) / 2;
   const centerRow = (rows - 1) / 2;
-  const spread = columns === 1 ? 18 : 32;
+  const spread = columns === 1 ? 26 : 32;
   return {
     x: (col - centerCol) * spread,
     y: (row - centerRow) * spread,

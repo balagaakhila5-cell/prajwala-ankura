@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import AnimatedHeading from './AnimatedHeading';
+import AnimatedReveal from './AnimatedReveal';
+import SectionMotionBackground from './SectionMotionBackground';
+import { sectionBackgrounds } from '../data/sectionBackgrounds';
 
-export default function EnquireForm() {
+const motionBg = sectionBackgrounds.enquire;
+
+export default function EnquireForm({ hideHeader = false }) {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' });
 
@@ -11,17 +16,27 @@ export default function EnquireForm() {
   };
 
   return (
-    <section id="enquire" className="enquire section">
-      <div className="container enquire-grid">
+    <section
+      id="enquire"
+      className={`enquire section section--motion section-motion-tone-${motionBg.tone}`}
+    >
+      <SectionMotionBackground {...motionBg} />
+      <div className="section-motion-content container enquire-grid">
         <div className="enquire-text">
-          <AnimatedHeading as="span" className="section-tag">Get in Touch</AnimatedHeading>
-          <AnimatedHeading as="h2">Enquire Now</AnimatedHeading>
-          <p>
-            Ready to embark on your journey towards your dream property? Contact us today
-            to learn more about our projects, schedule a site visit, or discuss your
-            specific requirements. Let&apos;s build your dream together with Prajwalaa Properties.
-          </p>
-          <div className="enquire-contacts">
+          {!hideHeader && (
+            <>
+              <AnimatedHeading as="span" className="section-tag">Get in Touch</AnimatedHeading>
+              <AnimatedHeading as="h2">Enquire Now</AnimatedHeading>
+            </>
+          )}
+          <AnimatedReveal delay={1}>
+            <p>
+              Ready to embark on your journey towards your dream property? Contact us today
+              to learn more about our projects, schedule a site visit, or discuss your
+              specific requirements. Let&apos;s build your dream together with Prajwalaa Properties.
+            </p>
+          </AnimatedReveal>
+          <AnimatedReveal className="enquire-contacts" delay={2}>
             <div className="contact-item">
               <span>📞</span>
               <div>
@@ -43,10 +58,11 @@ export default function EnquireForm() {
                 <p>Book a visit to our projects</p>
               </div>
             </div>
-          </div>
+          </AnimatedReveal>
         </div>
 
-        <form className="enquire-form" onSubmit={handleSubmit}>
+        <AnimatedReveal delay={2}>
+          <form className="enquire-form" onSubmit={handleSubmit}>
           {submitted ? (
             <div className="form-success">
               <h3>Thank You!</h3>
@@ -100,7 +116,8 @@ export default function EnquireForm() {
               <button type="submit" className="btn btn-primary btn-full">Submit Enquiry</button>
             </>
           )}
-        </form>
+          </form>
+        </AnimatedReveal>
       </div>
     </section>
   );
